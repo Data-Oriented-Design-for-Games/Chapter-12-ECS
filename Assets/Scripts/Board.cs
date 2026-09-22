@@ -76,13 +76,14 @@ namespace Survivor
 
         public void Show()
         {
-            for (int enemyIdx = 0; enemyIdx < gameData.AliveEnemyCount; enemyIdx++)
+            for (int i = 0; i < gameData.AliveEnemyCount; i++)
             {
-                int enemyType = gameData.EnemyType[enemyIdx];
+                int enemyIndex = gameData.AliveEnemyIndices[i];
+                int enemyType = gameData.EnemyType[enemyIndex];
 
                 int poolIndex = getFreeEnemyPoolIndex(enemyType);
                 m_enemyPool[poolIndex].SetActive(true);
-                m_enemyToPoolIndex[enemyIdx] = poolIndex;
+                m_enemyToPoolIndex[enemyIndex] = poolIndex;
             }
             for (int enemyIdx = gameData.AliveEnemyCount; enemyIdx < MaxEnemyPoolSize; enemyIdx++)
             {
